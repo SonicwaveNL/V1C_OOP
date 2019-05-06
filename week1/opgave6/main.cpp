@@ -7,9 +7,9 @@
 int main(int argc, char **argv){
     
    // the window in which we want to print the line
-   hwlib::target::window w( 128, 64 );   
+   hwlib::target::window w( 256, 64 );   
 
-   train cart1(w, 3);
+   train cart1(w, 6);
    cart1.run();
     
    // circle ice( w, 20, 40, 5 );

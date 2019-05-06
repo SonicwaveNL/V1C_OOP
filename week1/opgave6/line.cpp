@@ -9,5 +9,4 @@ void line::print(){
       hwlib::xy( start_x, start_y), 
       hwlib::xy( end_x, end_y ) );
    line.draw( w );
-   w.flush();
 }

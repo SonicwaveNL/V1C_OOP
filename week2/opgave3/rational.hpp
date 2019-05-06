@@ -1,6 +1,9 @@
 #ifndef RATIONAL_HPP
 #define RATIONAL_HPP
 
+#include <ostream>
+#include <iomanip>
+
 /// @file
 
 /// \brief
@@ -16,8 +19,6 @@ class rational {
 private:
    int counter;
    int denominator;
-   
-public:
 
    void reduce(){
       int a = counter;
@@ -34,6 +35,8 @@ public:
          denominator /= a;
       }
    }
+   
+public:
 
    /// \brief
    /// constructor from explicit values
@@ -43,7 +46,9 @@ public:
    /// with just a whole value.
    rational( int counter, int denominator = 1 ):
      counter( counter ), denominator( denominator )
-   {}
+   {
+      reduce();
+   }
    
    /// \brief   
    /// compare two rational values
@@ -52,13 +57,7 @@ public:
    /// if and only if the counter and denminator of both
    /// operands are equal.
    bool operator==( const rational & rhs ) const {
-      return ( counter == rhs.counter ) && ( denominator == rhs.denominator );
-   }
-
-   rational operator=( const rational & rhs ){
-      counter = rhs.counter;
-      denominator = rhs.denominator;
-      return *this;
+      return ( counter == rhs.counter) && (denominator == rhs.denominator );
    }
 
    /// \brief
@@ -68,18 +67,17 @@ public:
    /// [counter/denominator] where both values are printed as
    /// decimal values.
    friend std::ostream & operator<<( std::ostream & lhs, const rational & rhs ){
+      std::cout << "0x" << std::setfill ('0') << std::setw(4) << std::hex << rhs.counter << std::endl;
+      std::cout << "0x" << std::setfill ('0') << std::setw(4) << std::hex << rhs.denominator << std::endl;
       return lhs << "[" << rhs.counter << "/" << rhs.denominator << "]";
-   }   
+   }
    
    /// \brief   
    /// multiply a rational by an integer
    /// \details
    /// This operator* multiplies a rational value by an integer value.
-   rational operator*( const int & rhs ) const {
-      return rational( 
-         counter * rhs,
-         denominator * rhs 
-      );
+   rational operator*( const int rhs ) const {
+      return rational( counter * rhs, denominator * rhs );
    }
    
    /// \brief   
@@ -103,24 +101,17 @@ public:
       reduce();
       return *this;
    }
-
-   rational & operator/=( const int & rhs ){
-      counter = counter / rhs;
-      denominator = denominator / rhs;
-      return *this;
-   }
    
    /// \brief
    /// multiply a rational by a rational and set new values for the left sided object
    /// \details
    /// This oprator*= adds a rational value by a rational variable and set the output to the left sided object
    rational & operator*=( const rational & rhs ){
-      counter += rhs.counter;
-      denominator += rhs.denominator;
+      counter *= rhs.counter;
+      denominator *= rhs.denominator;
       reduce();
       return *this;
    }
    
 };
-Screenshot from 2019-05-03 14-43-35
 #endif

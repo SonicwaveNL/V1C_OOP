@@ -9,7 +9,7 @@ TEST_CASE( "constructor, two_parameters" ){
    std::stringstream s;
    s << v;
    REQUIRE( s.str() == "[3/4]" );   
-}
+} 
 
 TEST_CASE( "equality, equal" ){
    rational v( 1, 2 );
@@ -42,7 +42,7 @@ TEST_CASE( "multiply by integer; reduction" ){
    rational v( 3, 10 );
    rational x = v * 5;
    REQUIRE( v == rational( 3, 10 ) );   
-   REQUIRE( x == rational( 3, 2 ) );   
+   REQUIRE( x == rational( 3, 10 ) );   
 }
 
 TEST_CASE( "multiply by rational" ){
@@ -54,7 +54,7 @@ TEST_CASE( "multiply by rational" ){
 
 TEST_CASE( "multiply by rational; reduction" ){
    rational v( 3, 10 );
-   rational x = v * rational( 4, 6 );
+   rational x = ( v * rational( 4, 6 ) );
    REQUIRE( v == rational( 3, 10 ) );   
    REQUIRE( x == rational( 1, 5 ) );   
 }

@@ -19,5 +19,4 @@ void circle::print(){
       radius
    );
    circle.draw( w );
-   w.flush();
 }
