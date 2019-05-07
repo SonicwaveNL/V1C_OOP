@@ -1,0 +1,46 @@
+@startuml
+
+class train {
+    - w : hwlib::window &
+    - carts : int
+    + train(w : hwlib::window, carts : int)
+    + print_down() : void
+    + print_up() : void
+    + run() : void
+
+}
+
+class line {
+    - w : hwlib::window &
+    - start_x : int
+    - start_y : int
+    - end_x : int
+    - end_y : int
+    + line(w : hwlib::window, p_start_x : int, p_start_y : int, p_end_x : int, p_end_y : int) 
+    + print() : void
+}
+
+class circle {
+    - w : hwlib::window &
+    - start_x : int
+    - start_y : int
+    - radius : int_fast16_t
+    + circle(w : hwlib::window, start_x : int, start_y : int, radius : uint_fast16_t)
+    + print() : void
+}
+
+class rectangle {
+    - w : hwlib::window &
+    - left : line
+    - right : line
+    - top : line
+    - bottom : line
+    + rectangle(w : hwlib::window, start_x : int, start_y : int, end_x : int, end_y : int) 
+    + print() : void
+}
+
+rectangle "body"--* train
+circle "wheel_r"--* train 
+circle "wheel_l"--* train
+
+@enduml

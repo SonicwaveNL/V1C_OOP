@@ -20,6 +20,7 @@ public:
 
    void print_down();
    void print_up();
+   void print_track();
    void run();
 };
 
