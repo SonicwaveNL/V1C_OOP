@@ -42,5 +42,9 @@ class rectangle {
 rectangle "body"--* train
 circle "wheel_r"--* train 
 circle "wheel_l"--* train
+line "left"--* rectangle
+line "top"--* rectangle
+line "bottom"--* rectangle
+line "right"--* rectangle
 
 @enduml

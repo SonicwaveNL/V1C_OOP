@@ -4,7 +4,6 @@
 #include "hwlib.hpp"
 #include "rectangle.hpp"
 #include "circle.hpp"
-#include "vanilla.hpp"
 #include "train.hpp"
 
 //Cart body
@@ -28,16 +27,16 @@ int count = 0;
 int pos = 0;
 
 //Track
-int tr_amount = 3;
+int tr_amount = 50;
 int tr_count = 0;
-int tr_pos = tr_count * 7;
+int tr_pos = 0;
 
 void train::print_track(){
 
-    vanilla t_bottom( w, 0, 45, 256, 47 );
-    rectangle track1( w, tr_count, 43, tr_count + 4, 45 );
+    line t_bottom( w, 0, 45, 256, 45 );
+    rectangle track( w, tr_pos, 43, tr_pos + 4, 45 );
     t_bottom.print();
-    track1.print();
+    track.print();
 
 };
 
@@ -105,18 +104,29 @@ void train::run(){
                 print_down();
             }
 
-            for(int j = 0; j < tr_amount; j++){
-                print_track();
-                tr_count++;
+            for(int j = 1; j < tr_amount; j++){
+
+                if ( tr_count % 2 == 0 ){
+                    print_track();
+                } else {
+                    tr_pos -= 2;
+                    print_track();
+                }
+                
+                tr_pos = j * 7; 
+                
             }
-            
+    
             pos++;
             
         }
 
+        tr_count++;
+
         w.flush();
 
         pos = 0;
+        tr_pos = 0;
 
         if(count - 1 == carts){
             count = 0;

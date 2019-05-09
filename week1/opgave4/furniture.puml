@@ -1,0 +1,38 @@
+@startuml
+
+class table {
+    - n_legs : int
+    - length : int
+    - width : int
+    - print_table() : void
+    + print() : void
+    + add_legs() : void
+}
+
+class stool {
+    - n_legs : int
+    - n_seats : int
+    - print_stool() : void
+    + print() : void
+    + remove_legs() : void
+}
+
+class furniture {
+    - table1 : table
+    - stool1 : stool
+    - stool2 : stool
+    - stool3 : stool
+    - stool4 : stool
+    - print_furniture() : void
+    + print() : void
+    + makeMoreHipster() : void
+}
+
+furniture "table1"*-- table
+furniture "stool1"*-- stool
+furniture "stool2"*-- stool
+furniture "stool3"*-- stool
+furniture "stool4"*-- stool
+
+
+@enduml

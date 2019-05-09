@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := vanilla.cpp line.cpp circle.cpp rectangle.cpp train.cpp
+SOURCES := line.cpp circle.cpp rectangle.cpp train.cpp
 
 # header files in this project
-HEADERS := vanilla.hpp line.hpp circle.hpp rectangle.hpp train.hpp
+HEADERS := line.hpp circle.hpp rectangle.hpp train.hpp
 
 # other places to look for files for this project
 SEARCH  := 
